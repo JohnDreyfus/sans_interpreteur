@@ -18,7 +18,7 @@ server {
     error_log  /var/log/nginx/sans_interpreteur_site.log;
 
     location / {
-        try_files $uri =404;
+        try_files $uri $uri/ =404;
     }
 
 }
@@ -27,6 +27,7 @@ server {
 ## **3) Tester**
 ```
 - Activer le site
-- Aller dans votre navigateur pour tester le résultat
+- Aller dans votre navigateur pour tester le résultat. Que se passe-t-il?
+- Essayer avec cette commande: curl -i http://IP_SERVEUR
 ```
 
