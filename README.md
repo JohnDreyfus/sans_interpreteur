@@ -1,27 +1,26 @@
 ## **1) Arborescence**
 ```
-/var/www/sans_interpreteur/
+/var/www/sans_interpreteur_site/
 └── index.php
 ```
 
 ## **2) Conf Nginx**
-/etc/nginx/sites-available/sans_interpreteur.conf
+/etc/nginx/sites-available/sans_interpreteur_site.conf
 ```sh
 server {
     listen 80;
-    server_name no-php.local;
-    root /var/www/no-interpreter-demo;
+    server_name localhost;
+    root /var/www/sans_interpreteur_site;
 
     index index.php;   # on pointe quand même sur index.php pour la démo
 
-    access_log /var/log/nginx/no-php.access.log;
-    error_log  /var/log/nginx/no-php.error.log;
+    access_log /var/log/nginx/sans_interpreteur_site.log;
+    error_log  /var/log/nginx/sans_interpreteur_site.log;
 
     location / {
-        try_files $uri =404;  # pas de réécriture, pas de front controller
+        try_files $uri =404;
     }
 
-    # ⚠️ PAS de bloc PHP ici → le .php est servi tel quel (danger)
 }
 ```
 
